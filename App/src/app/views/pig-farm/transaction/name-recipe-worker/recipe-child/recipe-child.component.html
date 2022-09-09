@@ -1,0 +1,47 @@
+<ejs-grid
+  #grid
+  id="grid"
+  [dataSource]="data"
+  [allowPaging]="true"
+  [allowResizing]="true"
+  [allowSorting]="true"
+  gridLines="Both"
+  [locale]="locale"
+  [allowExcelExport]="true"
+  [enableInfiniteScrolling]="true"
+  (rowSelected)="rowSelected($event)"
+  (recordClick)="recordClick($event)"
+  (actionBegin)="actionBegin($event)"
+  [toolbar]="toolbarOptions"
+  [pageSettings]="pageSettingsRecipe"
+  [selectionSettings]="selectionOptions"
+  (dataBound)='dataBound()'
+>
+
+  <e-columns>
+
+    <e-column
+      field="name"
+      textAlign="Left"
+      headerText="{{ 'GLUE_NAME' | translate }}"
+    >
+    <ng-template #editTemplate let-data>
+      <ejs-dropdownlist #chemicalDropdownlist [dataSource]='dataGlue' 
+        [fields]='ChemicalFields' [allowFiltering]='true'
+        [(ngModel)]="shoeGlue.glueGuid"
+        >
+      </ejs-dropdownlist>
+    </ng-template>
+    </e-column>
+
+    <e-column
+      field="unit"
+      textAlign="Left"
+      headerText="{{ 'UNIT_LABEL' | translate }}"
+    >
+    
+    </e-column>
+
+    
+  </e-columns>
+</ejs-grid>
